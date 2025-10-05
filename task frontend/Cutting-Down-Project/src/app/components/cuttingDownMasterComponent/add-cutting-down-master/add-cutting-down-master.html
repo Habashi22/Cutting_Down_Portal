@@ -1,0 +1,68 @@
+<div class="form-container">
+  <h2>Add Cutting Down Ticket</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <div style="grid-column: span 2;">
+      <label>Channel</label>
+      <select [(ngModel)]="dto.channelKey" name="channelKey" required>
+        <option [ngValue]="0">-- Select Channel --</option>
+        <option *ngFor="let ch of channels" [value]="ch.id">{{ ch.name }}</option>
+      </select>
+    </div>
+
+    <div style="grid-column: span 2;">
+      <label>Problem Type</label>
+      <select [(ngModel)]="dto.problemTypeKey" name="problemTypeKey" required>
+        <option [ngValue]="0">-- Select Problem Type --</option>
+        <option *ngFor="let pt of problemTypes" [value]="pt.id">{{ pt.name }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Actual Start Date</label>
+      <input type="datetime-local" [(ngModel)]="dto.actualCreatedDate" name="actualCreatedDate" required />
+    </div>
+
+    <div>
+      <label>Actual End Date</label>
+      <input type="datetime-local" [(ngModel)]="dto.actualEndDate" name="actualEndDate" />
+    </div>
+
+    <div class="checkbox-group">
+      <div class="checkbox-container">
+        <input type="checkbox" id="isPlanned" [(ngModel)]="dto.isPlanned" name="isPlanned" />
+        <label for="isPlanned">Is Planned</label>
+      </div>
+      
+      <div class="checkbox-container">
+        <input type="checkbox" id="isGlobal" [(ngModel)]="dto.isGlobal" name="isGlobal" />
+        <label for="isGlobal">Is Global</label>
+      </div>
+    </div>
+
+    <div>
+      <label>Planned Start Date</label>
+      <input type="datetime-local" [(ngModel)]="dto.plannedStartDTS" name="plannedStartDTS" />
+    </div>
+
+    <div>
+      <label>Planned End Date</label>
+      <input type="datetime-local" [(ngModel)]="dto.plannedEndDTS" name="plannedEndDTS" />
+    </div>
+
+    <div>
+      <label>Network Element Key</label>
+      <input type="number" [(ngModel)]="dto.networkElementKey" name="networkElementKey" />
+    </div>
+
+    <div>
+      <label>Impacted Customers</label>
+      <input type="number" [(ngModel)]="dto.impactedCustomers" name="impactedCustomers" />
+    </div>
+
+    <button type="submit">Add Ticket</button>
+  </form>
+
+  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+</div>

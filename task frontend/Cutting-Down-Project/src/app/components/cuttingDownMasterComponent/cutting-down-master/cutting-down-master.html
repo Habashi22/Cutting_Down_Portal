@@ -1,0 +1,125 @@
+<div class="master-container">
+  <div class="search-panel">
+    <h2>Search Cutting Down Tickets</h2>
+
+    <form (ngSubmit)="onSearch()" class="master-search-form">
+      <!-- Channel Key -->
+      <label>
+        Source of Cutting Down
+        <select [(ngModel)]="searchDto.channelKey" name="channelKey">
+          <option [ngValue]="null">-- اختر  المصدر --</option>
+          <option *ngFor="let pt of channels" [value]="pt.id">
+            {{ pt.name }}
+          </option>
+        </select>
+      </label>
+
+      <!-- Problem Type dropdown -->
+      <label>
+        Problem Type
+        <select [(ngModel)]="searchDto.problemTypeKey" name="problemTypeKey">
+          <option [ngValue]="null">-- اختر نوع المشكلة --</option>
+          <option *ngFor="let pt of problemTypes" [value]="pt.id">
+            {{ pt.name }}
+          </option>
+        </select>
+      </label>
+
+      <!-- Filter Level dropdown -->
+      <label>
+        Search Criteria
+        <select [(ngModel)]="searchDto.filterLevel" name="filterLevel">
+          <option [ngValue]="null">-- Hierarchy --</option>
+          <option value="Zone">Zone</option>
+          <option value="City">City</option>
+          <!-- Add more levels as needed -->
+        </select>
+      </label>
+
+      <!-- Filter Key -->
+      <label>
+        Filter Key
+        <input
+          type="number"
+          [(ngModel)]="searchDto.filterKey"
+          name="filterKey"
+          placeholder="Filter Key"
+        />
+      </label>
+
+      <button type="submit">Search</button>
+      <button type="button" (click)="exportToExcel()" [disabled]="!searchResult">
+        Export to Excel
+      </button>
+    </form>
+
+    <div *ngIf="isLoading" class="loading">Loading...</div>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  </div>
+
+  <div class="actions" style="margin-bottom: 16px;">
+  <a routerLink="/addcuttingdownmaster" class="btn-link">
+   ➕ Add Cutting Down Master
+  </a>
+</div>
+
+  <!-- Results -->
+  <div class="results-panel" *ngIf="searchResult">
+    <h3>Results ({{ searchResult.totalCount }})</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Cutting Down Key</th>
+          <th>Incident Id</th>
+          <th>Channel</th>
+          <th>Is Planned</th>
+          <th>Problem Type</th>
+          <th>Created</th>
+          <th>Impacted Customers</th>
+          <th>Is Global</th>
+          <th>Ended At</th>
+          <th>Details</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of searchResult.results">
+          <td>{{ item.cuttingDownKey }}</td>
+          <td>{{ item.incidentId }}</td>
+          <td>{{ item.channelName }}</td>
+          <td>{{ item.isPlanned ? 'Yes' : 'No' }}</td>
+          <td>{{ item.problemTypeName }}</td>
+          <td>{{ item.createdAt | date: 'short' }}</td>
+          <td>{{ item.impactedCustomers }}</td>
+          <td>{{ item.isGlobal ? 'Yes' : 'No' }}</td>
+          <td>{{ item.endedAt ? (item.endedAt | date: 'short') : '-' }}</td>
+           <td>
+        <button (click)="goToDetails(item.cuttingDownKey)">
+          View Details
+        </button>
+      </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Pagination -->
+    <div class="pagination-controls">
+      <button
+        (click)="goToPage(searchDto.pageNumber - 1)"
+        [disabled]="searchDto.pageNumber <= 1"
+      >
+        Previous
+      </button>
+      <span>
+        Page {{ searchDto.pageNumber }} /
+        {{ Math.ceil(searchResult.totalCount / searchDto.pageSize) }}
+      </span>
+      <button
+        (click)="goToPage(searchDto.pageNumber + 1)"
+        [disabled]="searchDto.pageNumber * searchDto.pageSize >= searchResult.totalCount"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+</div>

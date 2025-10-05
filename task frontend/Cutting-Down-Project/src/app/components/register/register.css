@@ -1,0 +1,66 @@
+/* register.component.css */
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f3f0ff; /* light purple background */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+form {
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(110, 89, 255, 0.2);
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  border: 2px solid #6e59ff;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s;
+  font-size: 0.95rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: #6e59ff;
+  box-shadow: 0 0 0 2px rgba(110, 89, 255, 0.2);
+}
+
+button {
+  background-color: #6e59ff;
+  color: white;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+button:disabled {
+  background-color: #b9b2ff;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #5945e6;
+}
+
+div[style*="color: green"],
+div[style*="color: red"] {
+  font-size: 0.9rem;
+  padding-left: 5px;
+}

@@ -1,0 +1,40 @@
+/* Nav styles */
+.main-nav {
+  background-color: #6a0dad; /* WE purple */
+  padding: 15px 30px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.main-nav a:hover {
+  background-color: #5800a3; /* darker purple on hover */
+}
+
+.active-link {
+  background-color: #ffffff;
+  color: #6a0dad;
+  font-weight: 600;
+}
+
+/* Welcome message */
+.welcome-title {
+  text-align: center;
+  margin: 30px 0 20px;
+  font-size: 28px;
+  color: #6a0dad;
+  font-weight: 700;
+}

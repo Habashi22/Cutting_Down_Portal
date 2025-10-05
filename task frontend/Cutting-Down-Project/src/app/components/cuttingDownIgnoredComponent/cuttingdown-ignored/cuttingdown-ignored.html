@@ -1,0 +1,94 @@
+<!-- 🔍 Search Section -->
+<div class="ignored-search-container">
+  <h2>Search Ignored Records</h2>
+
+  <form (ngSubmit)="search()">
+    <input
+      type="text"
+      [(ngModel)]="query"
+      name="query"
+      placeholder="Enter ID, Cable or Cabin"
+      required
+    />
+    <button type="submit">🔍 Search</button>
+  </form>
+
+  <div *ngIf="isLoading">Loading...</div>
+  <div *ngIf="error" class="error-message">{{ error }}</div>
+
+  <table *ngIf="results.length > 0">
+    <thead>
+      <tr>
+        <th>Cutting_DownIncident_Id</th>
+        <th>Created Date</th>
+        <th>Synch Date</th>
+        <th>Cable Name</th>
+        <th>Cabin Name</th>
+        <th>Created By</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of results">
+        <td>{{ item.cutting_Down_Incident_ID }}</td>
+        <td>{{ item.actualCreatetDate | date: 'yyyy-MM-dd' }}</td>
+        <td>{{ item.synchCreateDate | date: 'yyyy-MM-dd' }}</td>
+        <td>{{ item.cabel_Name || '-' }}</td>
+        <td>{{ item.cabin_Name || '-' }}</td>
+        <td>{{ item.createdUser }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 🛠️ Toolbar Section -->
+<div class="ignored-toolbar">
+  <a routerLink="/addCuttingDownIgnored" class="toolbar-button">➕ Add New Ignored Record</a>
+  <button (click)="exportExcel()" class="toolbar-button">⬇ Export to Excel</button>
+</div>
+
+<!-- ✅ Feedback Messages -->
+<div class="ignored-actions">
+  <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+</div>
+
+<!-- 📄 Paginated Records Table -->
+<div class="ignored-container">
+  <h2>Ignored Cutting Down Incidents</h2>
+
+  <table *ngIf="ignoredList.length > 0">
+    <thead>
+      <tr>
+        <th>Cutting_DownIncident_Id</th>
+        <th>Actual Create Date</th>
+        <th>Sync Create Date</th>
+        <th>Cable Name</th>
+        <th>Cabin Name</th>
+        <th>Created By</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of ignoredList">
+        <td>{{ item.cutting_Down_Incident_ID }}</td>
+        <td>{{ item.actualCreatetDate | date: 'short' }}</td>
+        <td>{{ item.synchCreateDate | date: 'short' }}</td>
+        <td>{{ item.cabel_Name || '-' }}</td>
+        <td>{{ item.cabin_Name || '-' }}</td>
+        <td>{{ item.createdUser }}</td>
+        <td>
+          <button (click)="deleteRecord(item.cutting_Down_Incident_ID)" title="Delete this record">
+            🗑️ Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  <div class="pagination-controls">
+    <button (click)="previousPage()" [disabled]="pageNumber === 1">Previous</button>
+    <span>Page {{ pageNumber }}</span>
+    <button (click)="nextPage()">Next</button>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="details-container">
+  <div *ngIf="isLoading" class="loading">Loading ticket details...</div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="selectedTicket" class="ticket-details">
+    <h2>Ticket Details</h2>
+    
+    <div class="detail-grid">
+      <div class="detail-item">
+        <span class="label">ID:</span>
+        <span class="value">{{ selectedTicket.cuttingDownKey }}</span>
+      </div>
+      
+      <div class="detail-item">
+        <span class="label">Incident ID:</span>
+        <span class="value">{{ selectedTicket.incidentId }}</span>
+      </div>
+      
+      <div class="detail-item">
+        <span class="label">Channel:</span>
+        <span class="value">{{ selectedTicket.channelName }}</span>
+      </div>
+      
+      <div class="detail-item">
+        <span class="label">Problem Type:</span>
+        <span class="value">{{ selectedTicket.problemTypeName }}</span>
+      </div>
+      
+      <div class="detail-item">
+        <span class="label">Created At:</span>
+        <span class="value">{{ selectedTicket.createdAt | date:'medium' }}</span>
+      </div>
+      
+      <div class="detail-item">
+        <span class="label">Ended At:</span>
+        <span class="value">{{ selectedTicket.endedAt ? (selectedTicket.endedAt | date:'medium') : 'N/A' }}</span>
+      </div>
+      
+      <div class="detail-item">
+        <span class="label">Is Planned:</span>
+        <span class="value">{{ selectedTicket.isPlanned ? 'Yes' : 'No' }}</span>
+      </div>
+      
+      <div class="detail-item">
+        <span class="label">Is Global:</span>
+        <span class="value">{{ selectedTicket.isGlobal ? 'Yes' : 'No' }}</span>
+      </div>
+      
+      <div class="detail-item">
+        <span class="label">Impacted Customers:</span>
+        <span class="value">{{ selectedTicket.impactedCustomers }}</span>
+      </div>
+    </div>
+    
+    <div class="actions">
+      <button class="back-button" onclick="history.back()">Back to List</button>
+    </div>
+  </div>
+</div>

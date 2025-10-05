@@ -1,0 +1,128 @@
+.form-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 25px 30px;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 6px 18px rgba(103, 58, 183, 0.15);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #512da8;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* Full width items */
+form select, 
+form button[type="submit"] {
+  grid-column: span 2;
+}
+
+form label {
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 4px;
+  display: block;
+  font-size: 14px;
+}
+
+form input,
+form select {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s;
+  width: 100%;
+}
+
+form input:focus,
+form select:focus {
+  border-color: #673ab7;
+  outline: none;
+  box-shadow: 0 0 6px rgba(103, 58, 183, 0.2);
+}
+
+/* Checkbox container styling */
+.checkbox-group {
+  display: flex;
+  gap: 20px;
+  grid-column: span 2;
+  margin: 5px 0;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+}
+
+form input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  cursor: pointer;
+  accent-color: #673ab7;
+}
+
+form button[type="submit"] {
+  margin-top: 15px;
+  padding: 10px 0;
+  background-color: #673ab7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+  background-color: #512da8;
+}
+
+.success-message,
+.error-message {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 8px;
+  border-radius: 6px;
+  grid-column: span 2;
+}
+
+.success-message {
+  color: #1e8e3e;
+  background-color: #e6f4ea;
+}
+
+.error-message {
+  color: #d32f2f;
+  background-color: #fdeded;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  form {
+    grid-template-columns: 1fr;
+  }
+  
+  form select, 
+  form button[type="submit"],
+  .checkbox-group {
+    grid-column: span 1;
+  }
+}
