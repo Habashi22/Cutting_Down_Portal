@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Z we task implementaion\\ApiCalling\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EC280BB0-EB6C-4494-8EBD-571D01FC705E}|ApiCalling\\ApiCalling.csproj|e:\\z we task implementaion\\apicalling\\apicalling\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC280BB0-EB6C-4494-8EBD-571D01FC705E}|ApiCalling\\ApiCalling.csproj|solutionrelative:apicalling\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Z we task implementaion\\ApiCalling\\ApiCalling\\Program.cs",
+              "RelativeDocumentMoniker": "ApiCalling\\Program.cs",
+              "ToolTip": "E:\\Z we task implementaion\\ApiCalling\\ApiCalling\\Program.cs",
+              "RelativeToolTip": "ApiCalling\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T22:27:31.441Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
